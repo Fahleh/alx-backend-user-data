@@ -2,7 +2,6 @@
 """Authentication module for the API.
 """
 import re
-import os
 from typing import List, TypeVar
 from flask import request
 
@@ -10,7 +9,6 @@ from flask import request
 class Auth:
     """Authentication class.
     """
-
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """Checks the authentication requirements of a path.
         """
@@ -37,12 +35,4 @@ class Auth:
     def current_user(self, request=None) -> TypeVar('User'):
         """Gets the current user.
         """
-        return None
-
-    def session_cookie(self, request=None) -> str:
-        """Gets the value of the cookie named SESSION_NAME.
-        """
-        if request is not None:
-            cookie = os.getenv('SESSION_NAME')
-            return request.cookies.get(cookie)
         return None
